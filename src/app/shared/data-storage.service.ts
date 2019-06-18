@@ -10,7 +10,6 @@ export class DataStorageService {
     private url: string = 'https://ng-recipe-book-b8f11.firebaseio.com/recipes.json';
 
     storeRecipes(){
-        const token = this.authService.getToken();
     //    return this.http.put('https://ng-recipe-book-b8f11.firebaseio.com/recipes.json', 
     //             this.recipeService.getRecipes(), {
     //                 observe: 'body',
@@ -18,7 +17,7 @@ export class DataStorageService {
     //             }
     //    );
         const req = new HttpRequest('PUT', this.url, this.recipeService.getRecipes(), 
-            {reportProgress: true, params: new HttpParams().set('auth', token)});
+            {reportProgress: true});
         return this.http.request(req);
     }
 
